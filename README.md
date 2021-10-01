@@ -1,5 +1,5 @@
-# llvm-opt-pass
-This is a minimal LLVM optimization pass that allows one to experiment with the LLVM infrastructure for analysis and optimization.
+# llvm-codegen
+This is a minimal LLVM codegen example that allows one to experiment with the LLVM infrastructure for generating LLVM IR.
 
 ## How to Build the Project?
 
@@ -7,10 +7,10 @@ Build the project using `$ make`.
 
 Delete the auto-generated files using `$ make clean`.
 
-## Compiling a C/C++ Compilation Unit to LLVM IR
+## Running the Program and Generating Code
 
-Use `$ clang++ -std=c++17 -Wall -Wextra -emit-llvm -S -fno-discard-value-names some-file.cpp` to compile the file `some-file.cpp` to LLVM IR.
+Use `./codegen out.bc` to run the small codegen program and to produce some LLVM intermediate representation that is written to the `out.bc` bitcode file.
 
-## Running the Program and Analyzing LLVM IR
+One can compile the generated bitcode file to an executable binary using `$ clang++ -Wall -Wextra out.bc -o out`.
 
-Use `./transformation some-file.ll` to run the small LLVM-IR-Analyzer program on the `some-file.ll` LLVM IR file.
+The return code of the program can be checked (after running it) using `$ echo $?`.
